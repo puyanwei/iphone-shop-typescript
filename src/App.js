@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import data from './data/phones.json';
 
 import './App.css';
 
 class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <h1>Hello World</h1>
-            </div>
-        );
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			iphone: data
+		};
+	}
+	componentDidMount = () => {
+		console.log(this.state.iphone);
+	};
+	render() {
+		return <div className="App" />;
+	}
 }
 
 export default App;
