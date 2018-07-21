@@ -1,2 +1,10 @@
 .App {
+	display: grid;
+	grid-template-columns: 40% 60%;
+	aside {
+		grid-column-start: 1;
+	}
+	main {
+		grid-column-start: 2;
+	}
 }

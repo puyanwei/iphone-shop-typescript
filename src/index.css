@@ -1,7 +1,4 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    text-align: center;
-    background: beige;
-}
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-family: sans-serif; }
