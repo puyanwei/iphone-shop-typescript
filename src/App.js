@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import data from './data/phones.json';
 
+import data from './data/phones.json';
+import RatingStars from './components/RatingStars/RatingStars';
 import './App.css';
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
 				</aside>
 				<main>
 					<h1>Apple iPhone 8</h1>
-					<h2>STARS COMPONENT</h2>
+					<RatingStars />
 					<p>
 						All glas design, advanced cameras, wireless charging and
 						a smart A11 Bionic chip. Intelligence never looked

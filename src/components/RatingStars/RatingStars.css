@@ -1,0 +1,6 @@
+.rating-stars .fa-star {
+  padding: 0.2rem; }
+
+.rating-stars .checked {
+  color: yellow;
+  font-size: 30pt; }
