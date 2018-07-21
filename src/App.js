@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import data from './data/phones.json';
 import RatingStars from './components/RatingStars/RatingStars';
 import ColourPicker from './components/ColourPicker/ColourPicker';
+import CapacityPicker from './components/CapacityPicker/CapacityPicker';
 import './App.css';
 
 class App extends Component {
@@ -37,7 +38,7 @@ class App extends Component {
 						}
 					</p>
 					<ColourPicker />
-					<h2>CAPACITY COMPONENT</h2>
+					<CapacityPicker />
 					<p className="upfront-price">
 						from £{
 							this.state.iphone[0].deviceSummary[2].priceInfo
