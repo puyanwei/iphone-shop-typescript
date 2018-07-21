@@ -17,7 +17,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<aside>
+				<aside className=".side-image-container">
 					<img
 						src={require('./images/Apple_iPhone_8_Space_Grey_WS2-full-product-front.png')}
 						alt="iPhone space grey"
@@ -25,17 +25,32 @@ class App extends Component {
 					/>
 				</aside>
 				<main>
-					<h1>Apple iPhone 8</h1>
+					<h1 className="product-title">
+						{this.state.iphone[0].groupName}
+					</h1>
 					<RatingStars />
-					<p>
-						All glas design, advanced cameras, wireless charging and
-						a smart A11 Bionic chip. Intelligence never looked
-						better
+					<p className="product-description">
+						{
+							this.state.iphone[0].deviceSummary[2]
+								.displayDescription
+						}
 					</p>
 					<h2>COLOUR COMPONENT</h2>
 					<h2>CAPACITY COMPONENT</h2>
-					<p>from £1149 upfront cost</p>
-					<p>when you pay £43.20 a month</p>
+					<p className="upfront-price">
+						from £{
+							this.state.iphone[0].deviceSummary[2].priceInfo
+								.hardwarePrice.oneOffDiscountPrice.gross
+						}{' '}
+						upfront cost
+					</p>
+					<p className="monthly-price">
+						when you pay £{
+							this.state.iphone[0].deviceSummary[2].priceInfo
+								.bundlePrice.monthlyPrice.gross
+						}{' '}
+						a month
+					</p>
 				</main>
 			</div>
 		);

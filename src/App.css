@@ -1,7 +1,7 @@
 .App {
   display: grid;
   grid-template-columns: 40% 60%; }
-  .App aside {
+  .App .side-image-container {
     grid-column-start: 1; }
   .App main {
     grid-column-start: 2; }
