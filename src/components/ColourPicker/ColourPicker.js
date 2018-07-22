@@ -9,12 +9,21 @@ class ColourPicker extends Component {
 				<p>
 					Colour: <b>Space Grey</b>
 				</p>
-				<button>Gold</button>
-				<button>Silver</button>
-				<button>SGrey</button>
+				<button onClick={this.goldChoice}>Gold</button>
+				<button onClick={this.silverChoice}>Silver</button>
+				<button onClick={this.spaceGreyChoice}>SGrey</button>
 			</div>
 		);
 	}
+	goldChoice = () => {
+		this.props.handleColour('gold');
+	};
+	silverChoice = () => {
+		this.props.handleColour('silver');
+	};
+	spaceGreyChoice = () => {
+		this.props.handleColour('space-grey');
+	};
 }
 
 export default ColourPicker;

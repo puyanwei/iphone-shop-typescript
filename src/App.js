@@ -58,7 +58,7 @@ class App extends Component {
 						{this.state.description}
 					</p>
 					<div className="bottom-container">
-						<ColourPicker />
+						<ColourPicker handleColour={this.handleColour} />
 						<CapacityPicker handlePrice={this.handlePrice} />
 						<p className="upfront-price">
 							from £{this.state.upFrontPrice} upfront cost
@@ -93,6 +93,18 @@ class App extends Component {
 			upFrontPrice: upFrontPrice,
 			monthlyPrice: monthlyPrice
 		});
+	};
+
+	handleColour = (colour) => {
+		if (colour === 'gold') {
+			console.log('its gold');
+		}
+		if (colour === 'silver') {
+			console.log('its silver');
+		}
+		if (colour === 'space-grey') {
+			console.log('its space-grey');
+		}
 	};
 }
 
