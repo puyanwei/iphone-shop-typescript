@@ -14,12 +14,17 @@ class App extends Component {
 		super(props);
 		this.state = {
 			name: null,
-			phones: []
+			phonesData: [],
+			currentPhone: {
+				capacity: 64,
+				colour: 'Space Grey',
+				imageURL: iPhoneEightSpaceGrey,
+				alt: 'iPhone 8 Space Grey'
+			}
 		};
 	}
 	componentDidMount() {
 		this.getJSONData();
-		console.log(2, this.state);
 	}
 	getJSONData = () => {
 		const name = data[0].groupName;
@@ -37,9 +42,9 @@ class App extends Component {
 		});
 		this.setState({
 			name: name,
-			phones: array,
 			imageURL: iPhoneEightSpaceGrey,
-			alt: 'iPhone 8 Space Grey'
+			alt: 'iPhone 8 Space Grey',
+			phonesData: array
 		});
 	};
 	render() {
@@ -47,8 +52,8 @@ class App extends Component {
 			<div className="App">
 				<aside className=".side-image-container">
 					<img
-						src={this.state.imageURL}
-						alt={this.state.alt}
+						src={this.state.currentPhone.imageURL}
+						alt={this.state.currentPhone.alt}
 						style={{ width: '70%' }}
 					/>
 				</aside>
@@ -61,9 +66,12 @@ class App extends Component {
 					<div className="bottom-container">
 						<ColourPicker handleColour={this.handleColour} />
 						<CapacityPicker handlePrice={this.handlePrice} />
-						<p className="upfront-price">from £{} upfront cost</p>
+						<p className="upfront-price">
+							from £{this.state.currentPhone.upfrontPrice} upfront
+							cost
+						</p>
 						<p className="monthly-price">
-							when you pay £{} a month
+							when you pay £{this.state.imageURL} a month
 						</p>
 					</div>
 				</main>
@@ -82,25 +90,34 @@ class App extends Component {
 		}
 		console.log(this.state);
 		this.setState({
-			upfrontPrice: upfrontPrice,
+			phones: upfrontPrice,
 			monthlyPrice: monthlyPrice
 		});
 	};
 
 	handleColour = (colour) => {
 		if (colour === 'Gold') {
-			this.setState({ imageURL: iPhoneEightGold, alt: 'iPhone 8 Gold' });
+			this.setState({
+				currentPhone: {
+					imageURL: iPhoneEightGold,
+					alt: 'iPhone 8 Gold'
+				}
+			});
 		}
 		if (colour === 'Silver') {
 			this.setState({
-				imageURL: iPhoneEightSilver,
-				alt: 'iPhone 8 Silver'
+				currentPhone: {
+					imageURL: iPhoneEightSilver,
+					alt: 'iPhone 8 Silver'
+				}
 			});
 		}
 		if (colour === 'Space Grey') {
 			this.setState({
-				imageURL: iPhoneEightSpaceGrey,
-				alt: 'iPhone 8 Space Grey'
+				currentPhone: {
+					imageURL: iPhoneEightSpaceGrey,
+					alt: 'iPhone 8 Space Grey'
+				}
 			});
 		}
 	};
