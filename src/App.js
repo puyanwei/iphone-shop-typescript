@@ -5,6 +5,8 @@ import RatingStars from './components/RatingStars/RatingStars';
 import ColourPicker from './components/ColourPicker/ColourPicker';
 import CapacityPicker from './components/CapacityPicker/CapacityPicker';
 import iPhoneEightSpaceGrey from './images/Apple_iPhone_8_Space_Grey_WS2-full-product-front.png';
+import iPhoneEightSilver from './images/Apple_iPhone_8_Silver_WS2-full-product-front.png';
+import iPhoneEightGold from './images/Apple_iPhone_8_Gold-full-product-front.png';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +18,9 @@ class App extends Component {
 			colour: null,
 			capacity: null,
 			upFrontPrice: null,
-			monthlyPrice: null
+			monthlyPrice: null,
+			imageURL: null,
+			alt: null
 		};
 	}
 	componentDidMount() {
@@ -38,7 +42,9 @@ class App extends Component {
 			colour: colour,
 			capacity: capacity,
 			upFrontPrice: upFrontPrice,
-			monthlyPrice: monthlyPrice
+			monthlyPrice: monthlyPrice,
+			imageURL: iPhoneEightSpaceGrey,
+			alt: 'iPhone 8 Space Grey'
 		});
 	};
 	render() {
@@ -46,8 +52,8 @@ class App extends Component {
 			<div className="App">
 				<aside className=".side-image-container">
 					<img
-						src={iPhoneEightSpaceGrey}
-						alt="iPhone space grey"
+						src={this.state.imageURL}
+						alt={this.state.alt}
 						style={{ width: '70%' }}
 					/>
 				</aside>
@@ -97,13 +103,19 @@ class App extends Component {
 
 	handleColour = (colour) => {
 		if (colour === 'Gold') {
-			console.log(1);
+			this.setState({ imageURL: iPhoneEightGold, alt: 'iPhone 8 Gold' });
 		}
 		if (colour === 'Silver') {
-			console.log(2);
+			this.setState({
+				imageURL: iPhoneEightSilver,
+				alt: 'iPhone 8 Silver'
+			});
 		}
 		if (colour === 'Space Grey') {
-			console.log(3);
+			this.setState({
+				imageURL: iPhoneEightSpaceGrey,
+				alt: 'iPhone 8 Space Grey'
+			});
 		}
 	};
 }
