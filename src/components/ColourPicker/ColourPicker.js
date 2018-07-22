@@ -12,9 +12,7 @@ class ColourPicker extends Component {
 	render() {
 		return (
 			<div className="colour-picker">
-				<p>
-					Colour: <b>{this.state.colour}</b>
-				</p>
+				<p>Colour: {this.state.colour}</p>
 				<button onClick={() => this.colourChoice('Gold')}>Gold</button>
 				<button onClick={() => this.colourChoice('Silver')}>
 					Silver

@@ -3,22 +3,24 @@ import React, { Component } from 'react';
 import './CapacityPicker.css';
 
 class CapacityPicker extends Component {
+	constructor() {
+		super();
+		this.state = {
+			capacity: '64'
+		};
+	}
 	render() {
 		return (
 			<div className="capacity-picker">
-				<p>
-					Capacity: <b>64GB</b>
-				</p>
-				<button onClick={this.lowCapacity}>64</button>
-				<button onClick={this.highCapacity}>256</button>
+				<p>Capacity: {this.state.capacity}GB</p>
+				<button onClick={() => this.handleCapacity(64)}>64</button>
+				<button onClick={() => this.handleCapacity(256)}>256</button>
 			</div>
 		);
 	}
-	lowCapacity = () => {
-		this.props.handlePrice(64);
-	};
-	highCapacity = () => {
-		this.props.handlePrice(256);
+	handleCapacity = (capacity) => {
+		this.props.handlePrice(capacity);
+		this.setState({ capacity: capacity });
 	};
 }
 
