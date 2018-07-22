@@ -3,12 +3,6 @@ import React, { Component } from 'react';
 import './CapacityPicker.css';
 
 class CapacityPicker extends Component {
-	constructor() {
-		super();
-		this.state = {
-			capacity: 64
-		};
-	}
 	render() {
 		return (
 			<div className="capacity-picker">
@@ -21,10 +15,10 @@ class CapacityPicker extends Component {
 		);
 	}
 	lowCapacity = () => {
-		this.setState({ capacity: 64 });
+		this.props.handlePrice(64);
 	};
 	highCapacity = () => {
-		this.setState({ capacity: 256 });
+		this.props.handlePrice(256);
 	};
 }
 

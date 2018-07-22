@@ -28,7 +28,7 @@ class App extends Component {
 		const colour = data[0].deviceSummary[2].colourName;
 		const capacity = data[0].deviceSummary[2].memory;
 		const upFrontPrice =
-			data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffDiscountPrice.gross;
+			data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffPrice.gross;
 		const monthlyPrice =
 			data[0].deviceSummary[2].priceInfo.bundlePrice.monthlyPrice.gross;
 
@@ -59,7 +59,7 @@ class App extends Component {
 					</p>
 					<div className="bottom-container">
 						<ColourPicker />
-						<CapacityPicker />
+						<CapacityPicker handlePrice={this.handlePrice} />
 						<p className="upfront-price">
 							from £{this.state.upFrontPrice} upfront cost
 						</p>
@@ -71,6 +71,29 @@ class App extends Component {
 			</div>
 		);
 	}
+	handlePrice = (capacity) => {
+		let upFrontPrice;
+		let monthlyPrice;
+		if (capacity === 256) {
+			upFrontPrice =
+				data[0].deviceSummary[5].priceInfo.hardwarePrice.oneOffPrice
+					.gross;
+			monthlyPrice =
+				data[0].deviceSummary[5].priceInfo.bundlePrice.monthlyPrice
+					.gross;
+		} else {
+			upFrontPrice =
+				data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffPrice
+					.gross;
+			monthlyPrice =
+				data[0].deviceSummary[2].priceInfo.bundlePrice.monthlyPrice
+					.gross;
+		}
+		this.setState({
+			upFrontPrice: upFrontPrice,
+			monthlyPrice: monthlyPrice
+		});
+	};
 }
 
 export default App;
