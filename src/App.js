@@ -15,12 +15,12 @@ class App extends Component {
 		this.state = {
 			name: null,
 			phonesData: [],
-			currentPhone: {
-				capacity: 64,
-				colour: 'Space Grey',
-				imageURL: iPhoneEightSpaceGrey,
-				alt: 'iPhone 8 Space Grey'
-			}
+			capacity: 64,
+			colour: 'Space Grey',
+			imageURL: iPhoneEightSpaceGrey,
+			alt: 'iPhone 8 Space Grey',
+			upfrontPrice: '1149',
+			monthlyPrice: '43.20'
 		};
 	}
 	componentDidMount() {
@@ -42,8 +42,6 @@ class App extends Component {
 		});
 		this.setState({
 			name: name,
-			imageURL: iPhoneEightSpaceGrey,
-			alt: 'iPhone 8 Space Grey',
 			phonesData: array
 		});
 	};
@@ -52,8 +50,8 @@ class App extends Component {
 			<div className="App">
 				<aside className=".side-image-container">
 					<img
-						src={this.state.currentPhone.imageURL}
-						alt={this.state.currentPhone.alt}
+						src={this.state.imageURL}
+						alt={this.state.alt}
 						style={{ width: '70%' }}
 					/>
 				</aside>
@@ -67,30 +65,29 @@ class App extends Component {
 						<ColourPicker handleColour={this.handleColour} />
 						<CapacityPicker handlePrice={this.handlePrice} />
 						<p className="upfront-price">
-							from £{this.state.currentPhone.upfrontPrice} upfront
-							cost
+							from £{this.state.upfrontPrice} upfront cost
 						</p>
 						<p className="monthly-price">
-							when you pay £{this.state.imageURL} a month
+							when you pay £{this.state.monthlyPrice} a month
 						</p>
 					</div>
 				</main>
 			</div>
 		);
 	}
-	handlePrice = (capacity = 64) => {
+	handlePrice = (capacity) => {
 		let upfrontPrice;
 		let monthlyPrice;
 		if (capacity === 256) {
-			upfrontPrice = this.state.phones[5].upfrontPrice;
-			monthlyPrice = this.state.phones[5].monthlyPrice;
+			upfrontPrice = this.state.phonesData[5].upfrontPrice;
+			monthlyPrice = this.state.phonesData[5].monthlyPrice;
 		} else {
-			upfrontPrice = this.state.phones[2].upfrontPrice;
-			monthlyPrice = this.state.phones[2].monthlyPrice;
+			upfrontPrice = this.state.phonesData[2].upfrontPrice;
+			monthlyPrice = this.state.phonesData[2].monthlyPrice;
 		}
 		console.log(this.state);
 		this.setState({
-			phones: upfrontPrice,
+			upfrontPrice: upfrontPrice,
 			monthlyPrice: monthlyPrice
 		});
 	};
@@ -98,26 +95,20 @@ class App extends Component {
 	handleColour = (colour) => {
 		if (colour === 'Gold') {
 			this.setState({
-				currentPhone: {
-					imageURL: iPhoneEightGold,
-					alt: 'iPhone 8 Gold'
-				}
+				imageURL: iPhoneEightGold,
+				alt: 'iPhone 8 Gold'
 			});
 		}
 		if (colour === 'Silver') {
 			this.setState({
-				currentPhone: {
-					imageURL: iPhoneEightSilver,
-					alt: 'iPhone 8 Silver'
-				}
+				imageURL: iPhoneEightSilver,
+				alt: 'iPhone 8 Silver'
 			});
 		}
 		if (colour === 'Space Grey') {
 			this.setState({
-				currentPhone: {
-					imageURL: iPhoneEightSpaceGrey,
-					alt: 'iPhone 8 Space Grey'
-				}
+				imageURL: iPhoneEightSpaceGrey,
+				alt: 'iPhone 8 Space Grey'
 			});
 		}
 	};
