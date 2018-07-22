@@ -14,6 +14,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			name: null,
+			description: null,
 			phonesData: [],
 			capacity: 64,
 			colour: 'Space Grey',
@@ -46,34 +47,38 @@ class App extends Component {
 		});
 	};
 	render() {
-		return (
-			<div className="App">
-				<aside className=".side-image-container">
-					<img
-						src={this.state.imageURL}
-						alt={this.state.alt}
-						style={{ width: '70%' }}
-					/>
-				</aside>
-				<main>
-					<h1 className="product-name">{this.state.name}</h1>
-					<RatingStars />
-					<p className="product-description">
-						{this.state.description}
-					</p>
-					<div className="bottom-container">
-						<ColourPicker handleColour={this.handleColour} />
-						<CapacityPicker handlePrice={this.handlePrice} />
-						<p className="upfront-price">
-							from £{this.state.upfrontPrice} upfront cost
+		if (this.state.phonesData.length === 0) {
+			return <div className="data-delay" />;
+		} else {
+			return (
+				<div className="App">
+					<aside className=".side-image-container">
+						<img
+							src={this.state.imageURL}
+							alt={this.state.alt}
+							style={{ width: '70%' }}
+						/>
+					</aside>
+					<main>
+						<h1 className="product-name">{this.state.name}</h1>
+						<RatingStars />
+						<p className="product-description">
+							{this.state.phonesData[0].description}
 						</p>
-						<p className="monthly-price">
-							when you pay £{this.state.monthlyPrice} a month
-						</p>
-					</div>
-				</main>
-			</div>
-		);
+						<div className="bottom-container">
+							<ColourPicker handleColour={this.handleColour} />
+							<CapacityPicker handlePrice={this.handlePrice} />
+							<p className="upfront-price">
+								from £{this.state.upfrontPrice} upfront cost
+							</p>
+							<p className="monthly-price">
+								when you pay £{this.state.monthlyPrice} a month
+							</p>
+						</div>
+					</main>
+				</div>
+			);
+		}
 	}
 	handlePrice = (capacity) => {
 		let upfrontPrice;
