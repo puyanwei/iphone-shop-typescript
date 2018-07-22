@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import data from './data/phones.json';
-import RatingStars from './components/RatingStars/RatingStars';
-import ColourPicker from './components/ColourPicker/ColourPicker';
-import CapacityPicker from './components/CapacityPicker/CapacityPicker';
 import iPhoneEightSpaceGrey from './images/Apple_iPhone_8_Space_Grey_WS2-full-product-front.png';
 import iPhoneEightSilver from './images/Apple_iPhone_8_Silver_WS2-full-product-front.png';
 import iPhoneEightGold from './images/Apple_iPhone_8_Gold-full-product-front.png';
+import RatingStars from './components/RatingStars/RatingStars';
+import ColourPicker from './components/ColourPicker/ColourPicker';
+import CapacityPicker from './components/CapacityPicker/CapacityPicker';
 import './App.css';
 
 class App extends Component {
@@ -14,35 +14,30 @@ class App extends Component {
 		super(props);
 		this.state = {
 			name: null,
-			description: null,
-			colour: null,
-			capacity: null,
-			upFrontPrice: null,
-			monthlyPrice: null,
-			imageURL: null,
-			alt: null
+			phones: []
 		};
 	}
 	componentDidMount() {
 		this.getJSONData();
+		console.log(2, this.state);
 	}
 	getJSONData = () => {
 		const name = data[0].groupName;
-		const description = data[0].deviceSummary[2].displayDescription;
-		const colour = data[0].deviceSummary[2].colourName;
-		const capacity = data[0].deviceSummary[2].memory;
-		const upFrontPrice =
-			data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffPrice.gross;
-		const monthlyPrice =
-			data[0].deviceSummary[2].priceInfo.bundlePrice.monthlyPrice.gross;
+		const array = [];
 
+		data[0].deviceSummary.forEach((element) => {
+			array.push({
+				name: element.displayName,
+				description: element.displayDescription,
+				colour: element.colourName,
+				capacity: element.memory,
+				upfrontPrice: element.priceInfo.hardwarePrice.oneOffPrice.gross,
+				monthlyPrice: element.priceInfo.bundlePrice.monthlyPrice.gross
+			});
+		});
 		this.setState({
 			name: name,
-			description: description,
-			colour: colour,
-			capacity: capacity,
-			upFrontPrice: upFrontPrice,
-			monthlyPrice: monthlyPrice,
+			phones: array,
 			imageURL: iPhoneEightSpaceGrey,
 			alt: 'iPhone 8 Space Grey'
 		});
@@ -66,37 +61,28 @@ class App extends Component {
 					<div className="bottom-container">
 						<ColourPicker handleColour={this.handleColour} />
 						<CapacityPicker handlePrice={this.handlePrice} />
-						<p className="upfront-price">
-							from £{this.state.upFrontPrice} upfront cost
-						</p>
+						<p className="upfront-price">from £{} upfront cost</p>
 						<p className="monthly-price">
-							when you pay £{this.state.monthlyPrice} a month
+							when you pay £{} a month
 						</p>
 					</div>
 				</main>
 			</div>
 		);
 	}
-	handlePrice = (capacity) => {
-		let upFrontPrice;
+	handlePrice = (capacity = 64) => {
+		let upfrontPrice;
 		let monthlyPrice;
 		if (capacity === 256) {
-			upFrontPrice =
-				data[0].deviceSummary[5].priceInfo.hardwarePrice.oneOffPrice
-					.gross;
-			monthlyPrice =
-				data[0].deviceSummary[5].priceInfo.bundlePrice.monthlyPrice
-					.gross;
+			upfrontPrice = this.state.phones[5].upfrontPrice;
+			monthlyPrice = this.state.phones[5].monthlyPrice;
 		} else {
-			upFrontPrice =
-				data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffPrice
-					.gross;
-			monthlyPrice =
-				data[0].deviceSummary[2].priceInfo.bundlePrice.monthlyPrice
-					.gross;
+			upfrontPrice = this.state.phones[2].upfrontPrice;
+			monthlyPrice = this.state.phones[2].monthlyPrice;
 		}
+		console.log(this.state);
 		this.setState({
-			upFrontPrice: upFrontPrice,
+			upfrontPrice: upfrontPrice,
 			monthlyPrice: monthlyPrice
 		});
 	};
