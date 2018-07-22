@@ -96,14 +96,14 @@ class App extends Component {
 	};
 
 	handleColour = (colour) => {
-		if (colour === 'gold') {
-			console.log('its gold');
+		if (colour === 'Gold') {
+			console.log(1);
 		}
-		if (colour === 'silver') {
-			console.log('its silver');
+		if (colour === 'Silver') {
+			console.log(2);
 		}
-		if (colour === 'space-grey') {
-			console.log('its space-grey');
+		if (colour === 'Space Grey') {
+			console.log(3);
 		}
 	};
 }
