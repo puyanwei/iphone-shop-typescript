@@ -7,7 +7,7 @@ class ColourPicker extends Component {
 		return (
 			<div className="colour-picker">
 				<p>
-					Colour:<b>Space Grey</b>
+					Colour: <b>Space Grey</b>
 				</p>
 				<button>Gold</button>
 				<button>Silver</button>

@@ -7,7 +7,7 @@ class CapacityPicker extends Component {
 		return (
 			<div className="capacity-picker">
 				<p>
-					Capacity:<b>64GB</b>
+					Capacity: <b>64GB</b>
 				</p>
 				<button>64</button>
 				<button>256</button>

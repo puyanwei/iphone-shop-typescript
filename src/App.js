@@ -49,19 +49,21 @@ class App extends Component {
 					/>
 				</aside>
 				<main>
-					<h1 className="product-title">{this.state.name}</h1>
+					<h1 className="product-name">{this.state.name}</h1>
 					<RatingStars />
 					<p className="product-description">
 						{this.state.description}
 					</p>
-					<ColourPicker />
-					<CapacityPicker />
-					<p className="upfront-price">
-						from £{this.state.upFrontPrice} upfront cost
-					</p>
-					<p className="monthly-price">
-						when you pay £{this.state.monthlyPrice} a month
-					</p>
+					<div className="bottom-container">
+						<ColourPicker />
+						<CapacityPicker />
+						<p className="upfront-price">
+							from £{this.state.upFrontPrice} upfront cost
+						</p>
+						<p className="monthly-price">
+							when you pay £{this.state.monthlyPrice} a month
+						</p>
+					</div>
 				</main>
 			</div>
 		);
