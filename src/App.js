@@ -19,16 +19,19 @@ class App extends Component {
 			monthlyPrice: null
 		};
 	}
-	componentDidMount = () => {
+	componentDidMount() {
+		this.getJSONData();
+	}
+	getJSONData = () => {
 		const name = data[0].groupName;
 		const description = data[0].deviceSummary[2].displayDescription;
 		const colour = data[0].deviceSummary[2].colourName;
 		const capacity = data[0].deviceSummary[2].memory;
 		const upFrontPrice =
-			data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffDiscountPrice
-				.gross;
+			data[0].deviceSummary[2].priceInfo.hardwarePrice.oneOffDiscountPrice.gross;
 		const monthlyPrice =
 			data[0].deviceSummary[2].priceInfo.bundlePrice.monthlyPrice.gross;
+
 		this.setState({
 			name: name,
 			description: description,
