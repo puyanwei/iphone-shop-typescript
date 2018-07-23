@@ -11,90 +11,17 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			phonesData: [],
-			name: null,
-			currentDescription:
-				'All-glass design, advanced cameras, wireless charging and a smart A11 Bionic chip. Intelligence never looked better.',
-			currentImageURL: iPhone8SpaceGrey,
-			currentImageAlt: 'PR_IMAGE_URLS_THUMBS_FRONT',
-			currentUpfrontPrice: '1149',
-			currentMonthlyPrice: '43.20'
+			phonesArray: [],
+			currentPhone: null
 		};
 	}
 	componentDidMount() {
 		this.getJSONData();
 	}
-	render() {
-		if (this.state.phonesData.length !== 6) {
-			return <div className="data-delay" />;
-		} else {
-			return (
-				<div className="App">
-					<aside>
-						<img
-							src={this.state.currentImageURL}
-							alt={this.state.currentImageAlt}
-						/>
-					</aside>
-					<main>
-						<h1 className="product-name">{this.state.name}</h1>
-						<RatingStars />
-						<p className="product-description">
-							{this.state.currentDescription}
-						</p>
-						<div className="bottom-container">
-							<ColourPicker handleColour={this.handleColour} />
-							<CapacityPicker handlePrice={this.handlePrice} />
-							<p className="upfront-price">
-								from{' '}
-								<span className="price-number">
-									£{this.state.currentUpfrontPrice}
-								</span>{' '}
-								upfront cost
-							</p>
-							<p className="monthly-price">
-								when you pay{' '}
-								<span className="price-number">
-									£{this.state.currentMonthlyPrice}
-								</span>{' '}
-								a month
-							</p>
-						</div>
-					</main>
-				</div>
-			);
-		}
-	}
-	// Handles the button pressed value in CapacityPicker component and updates the page
-	handlePrice = (capacity = 64) => {
-		let upfrontPrice;
-		let monthlyPrice;
-		if (capacity === 256) {
-			upfrontPrice = this.state.phonesData[5].upfrontPrice;
-			monthlyPrice = this.state.phonesData[5].monthlyPrice;
-		} else {
-			upfrontPrice = this.state.phonesData[2].upfrontPrice;
-			monthlyPrice = this.state.phonesData[2].monthlyPrice;
-		}
-		this.setState({
-			currentUpfrontPrice: upfrontPrice,
-			currentMonthlyPrice: monthlyPrice
-		});
-	};
-
-	// Handles the button pressed value in ColourPicker component and updates the page
-	handleColour = (colourNumber = 2) => {
-		this.setState({
-			currentImageURL: require(`${
-				this.state.phonesData[colourNumber].imageURL
-			}`),
-			currentImageAlt: this.state.phonesData[colourNumber].imageAlt
-		});
-	};
 
 	// Grabs the data from JSON file and copies it to the state
 	getJSONData = () => {
-		const name = data[0].groupName;
+		const groupName = data[0].groupName;
 		const array = [];
 
 		data[0].deviceSummary.forEach((element) => {
@@ -108,24 +35,77 @@ class App extends Component {
 			});
 		});
 		this.setState({
-			name: name,
-			phonesData: array
+			currentPhone: array[2],
+			phonesArray: array
+		});
+	};
+	render() {
+		if (!this.state.phonesArray.length) {
+			return <div className="loading-splash">Loading...</div>;
+		}
+		return (
+			<div className="App">
+				<aside>
+					<img
+						src={require(`${this.state.currentPhone.imageURL}`)}
+						alt={this.state.currentPhone.imageAlt}
+					/>
+				</aside>
+				<main>
+					<h1 className="product-name">
+						{this.state.currentPhone.name}
+					</h1>
+					<RatingStars />
+					<p className="product-description">
+						{this.state.currentPhone.description}
+					</p>
+					<div className="bottom-container">
+						<ColourPicker handleColour={this.handleColour} />
+						<CapacityPicker handlePrice={this.handlePrice} />
+						<p className="upfront-price">
+							from{' '}
+							<span className="price-number">
+								£{this.state.currentPhone.upfrontPrice}
+							</span>{' '}
+							upfront cost
+						</p>
+						<p className="monthly-price">
+							when you pay{' '}
+							<span className="price-number">
+								£{this.state.currentPhone.monthlyPrice}
+							</span>{' '}
+							a month
+						</p>
+					</div>
+				</main>
+			</div>
+		);
+	}
+	// Handles the button pressed value in CapacityPicker component and updates the page
+	handlePrice = (capacity = 64) => {
+		let upfrontPrice;
+		let monthlyPrice;
+		if (capacity === 256) {
+			upfrontPrice = this.state.phonesArray[5].upfrontPrice;
+			monthlyPrice = this.state.phonesArray[5].monthlyPrice;
+		} else {
+			upfrontPrice = this.state.phonesArray[2].upfrontPrice;
+			monthlyPrice = this.state.phonesArray[2].monthlyPrice;
+		}
+		this.setState({
+			currentUpfrontPrice: upfrontPrice,
+			currentMonthlyPrice: monthlyPrice
 		});
 	};
 
-	applyDefaults = () => {
-		// const imageURL = this.state.phonesData[2].imageURL;
-		// console.log(this.state.phonesData[2].imageURL);
-		// const imageAlt = this.state.phonesData[2].imageAlt;
-		// const upfrontPrice = this.state.phonesData[2].upfrontPrice;
-		// const monthlyPrice = this.state.phonesData[2].monthlyPrice;
-		//
-		// this.setState({
-		// imageURL: imageURL
-		// 	imageAlt: imageAlt,
-		// 	upfrontPrice: upfrontPrice,
-		// 	monthlyPrice: monthlyPrice
-		// });
+	// Handles the button pressed value in ColourPicker component and updates the page
+	handleColour = (colourNumber = 2) => {
+		this.setState({
+			currentImageURL: require(`${
+				this.state.phonesArray[colourNumber].imageURL
+			}`),
+			currentImageAlt: this.state.phonesArray[colourNumber].imageAlt
+		});
 	};
 }
 
