@@ -1,8 +1,13 @@
 .App {
 	display: grid;
-	grid-template-columns: 40% 60%;
-	.side-image-container {
+	grid-template-columns: 50% 50%;
+	aside {
 		grid-column-start: 1;
+		img {
+			display: block;
+			width: 35%;
+			margin: 30px auto;
+		}
 	}
 	main {
 		grid-column-start: 2;
@@ -10,6 +15,18 @@
 			display: grid;
 			grid-template-columns: 50% 50%;
 			grid-auto-rows: 200px;
+			.upfront-price {
+				span {
+					color: red;
+					font-weight: bold;
+				}
+			}
+			.monthly-price {
+				span {
+					color: red;
+					font-weight: bold;
+				}
+			}
 		}
 	}
 }

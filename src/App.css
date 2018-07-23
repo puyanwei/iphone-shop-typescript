@@ -1,11 +1,21 @@
 .App {
   display: grid;
-  grid-template-columns: 40% 60%; }
-  .App .side-image-container {
+  grid-template-columns: 50% 50%; }
+  .App aside {
     grid-column-start: 1; }
+    .App aside img {
+      display: block;
+      width: 35%;
+      margin: 30px auto; }
   .App main {
     grid-column-start: 2; }
     .App main .bottom-container {
       display: grid;
       grid-template-columns: 50% 50%;
       grid-auto-rows: 200px; }
+      .App main .bottom-container .upfront-price span {
+        color: red;
+        font-weight: bold; }
+      .App main .bottom-container .monthly-price span {
+        color: red;
+        font-weight: bold; }

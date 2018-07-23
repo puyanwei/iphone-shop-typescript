@@ -47,12 +47,8 @@ class App extends Component {
 		} else {
 			return (
 				<div className="App">
-					<aside className=".side-image-container">
-						<img
-							src={this.state.imageURL}
-							alt={this.state.alt}
-							style={{ width: '70%' }}
-						/>
+					<aside>
+						<img src={this.state.imageURL} alt={this.state.alt} />
 					</aside>
 					<main>
 						<h1 className="product-name">{this.state.name}</h1>
@@ -64,10 +60,12 @@ class App extends Component {
 							<ColourPicker handleColour={this.handleColour} />
 							<CapacityPicker handlePrice={this.handlePrice} />
 							<p className="upfront-price">
-								from £{this.state.upfrontPrice} upfront cost
+								from <span>£{this.state.upfrontPrice}</span>{' '}
+								upfront cost
 							</p>
 							<p className="monthly-price">
-								when you pay £{this.state.monthlyPrice} a month
+								when you pay{' '}
+								<span>£{this.state.monthlyPrice}</span> a month
 							</p>
 						</div>
 					</main>
