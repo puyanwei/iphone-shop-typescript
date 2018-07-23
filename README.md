@@ -63,3 +63,4 @@ One of the blockers I had was getting the default data onto the page after I had
 -   Responsive page - Implementing my deign mobile first, and then working up to bigger screen sizes would be a must if this page was to go live. However, this was not asked in the brief so I wanted to follow it strictly.
 -   Button Component - The buttons could have their own flexible component that I could reuse. Props such as background colour and text could be added to these components to make them scalable.
 -   State Management - Redux could be added if there are more pages and assets to be added and the project grows.
+-   Refactor - Could it be refactored further? I am aware of destructuring objects which could be used in the #getJSONData function but at the moment I am not so familiar with it.
