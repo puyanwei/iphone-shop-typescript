@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-I used ESLint following the air-bnb style guide to assure quality in my code.
+I used ESLint following the [air-bnb](https://github.com/airbnb/javascript) style guide to assure quality in my code.
 
 `npm run lint`
 
