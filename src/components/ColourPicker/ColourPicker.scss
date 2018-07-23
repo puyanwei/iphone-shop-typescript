@@ -1,4 +1,10 @@
 .colour-picker {
+	p {
+		.picker-choice {
+			font-weight: bolder;
+			font-size: 14pt;
+		}
+	}
 	button {
 		width: 50px;
 		height: 2.5rem;

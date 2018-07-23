@@ -12,7 +12,12 @@ class CapacityPicker extends Component {
 	render() {
 		return (
 			<div className="capacity-picker">
-				<p>Capacity: {this.state.capacity}GB</p>
+				<p>
+					Capacity:{' '}
+					<span className="picker-choice">
+						{this.state.capacity}GB
+					</span>
+				</p>
 				<button onClick={() => this.handleCapacity(64)}>64</button>
 				<button onClick={() => this.handleCapacity(256)}>256</button>
 			</div>

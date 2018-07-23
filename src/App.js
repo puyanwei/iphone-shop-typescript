@@ -60,12 +60,18 @@ class App extends Component {
 							<ColourPicker handleColour={this.handleColour} />
 							<CapacityPicker handlePrice={this.handlePrice} />
 							<p className="upfront-price">
-								from <span>£{this.state.upfrontPrice}</span>{' '}
+								from{' '}
+								<span className="price-number">
+									£{this.state.upfrontPrice}
+								</span>{' '}
 								upfront cost
 							</p>
 							<p className="monthly-price">
 								when you pay{' '}
-								<span>£{this.state.monthlyPrice}</span> a month
+								<span className="price-number">
+									£{this.state.monthlyPrice}
+								</span>{' '}
+								a month
 							</p>
 						</div>
 					</main>

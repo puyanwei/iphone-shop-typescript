@@ -13,9 +13,7 @@
       display: grid;
       grid-template-columns: 50% 50%;
       grid-auto-rows: 200px; }
-      .App main .bottom-container .upfront-price span {
+      .App main .bottom-container p .price-number {
         color: red;
-        font-weight: bold; }
-      .App main .bottom-container .monthly-price span {
-        color: red;
+        font-size: 20pt;
         font-weight: bold; }

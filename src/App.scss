@@ -15,15 +15,10 @@
 			display: grid;
 			grid-template-columns: 50% 50%;
 			grid-auto-rows: 200px;
-			.upfront-price {
-				span {
+			p {
+				.price-number {
 					color: red;
-					font-weight: bold;
-				}
-			}
-			.monthly-price {
-				span {
-					color: red;
+					font-size: 20pt;
 					font-weight: bold;
 				}
 			}
