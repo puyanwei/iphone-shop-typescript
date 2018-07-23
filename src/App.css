@@ -10,6 +10,8 @@
       margin: 30px auto; }
   .App main {
     grid-column-start: 2; }
+    .App main .product-name {
+      width: 80%; }
     .App main .bottom-container {
       display: grid;
       grid-template-columns: 50% 50%;

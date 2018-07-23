@@ -21,17 +21,16 @@ class App extends Component {
 	// Grabs the data from JSON file and copies it to the state
 	getJSONData = () => {
 		const array = [];
-
-		data[0].deviceSummary.forEach((phone) => {
+		data[0].deviceSummary.forEach((device) => {
 			array.push({
-				name: phone.displayName,
-				description: phone.displayDescription,
-				colour: phone.colourName,
-				capacity: phone.memory,
-				imageURL: phone.merchandisingMedia[0].value,
-				imageAlt: phone.merchandisingMedia[0].id,
-				upfrontPrice: phone.priceInfo.hardwarePrice.oneOffPrice.gross,
-				monthlyPrice: phone.priceInfo.bundlePrice.monthlyPrice.gross
+				name: device.displayName,
+				description: device.displayDescription,
+				colour: device.colourName,
+				capacity: device.memory,
+				imageURL: device.merchandisingMedia[0].value,
+				imageAlt: device.merchandisingMedia[0].id,
+				upfrontPrice: device.priceInfo.hardwarePrice.oneOffPrice.gross,
+				monthlyPrice: device.priceInfo.bundlePrice.monthlyPrice.gross
 			});
 		});
 		this.setState({
@@ -41,7 +40,7 @@ class App extends Component {
 	};
 	render() {
 		if (!this.state.phonesArray.length) {
-			return <div className="loading-splash">Loading...</div>;
+			return <div className="loading-screen">Loading...</div>;
 		}
 		return (
 			<div className="App">

@@ -11,6 +11,9 @@
 		}
 	}
 	main {
+		.product-name {
+			width: 80%;
+		}
 		grid-column-start: 2;
 		.bottom-container {
 			display: grid;
