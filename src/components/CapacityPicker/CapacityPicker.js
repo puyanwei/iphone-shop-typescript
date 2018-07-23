@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './CapacityPicker.css';
 
@@ -32,5 +33,9 @@ class CapacityPicker extends Component {
 		this.setState({ capacity: capacity });
 	};
 }
+
+CapacityPicker.propTypes = {
+	handlePrice: PropTypes.func
+};
 
 export default CapacityPicker;

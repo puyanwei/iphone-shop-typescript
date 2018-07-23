@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './ColourPicker.css';
 
@@ -37,5 +38,9 @@ class ColourPicker extends Component {
 		this.setState({ colour: colour });
 	};
 }
+
+ColourPicker.propTypes = {
+	handleColour: PropTypes.func
+};
 
 export default ColourPicker;
