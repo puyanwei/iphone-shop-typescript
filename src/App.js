@@ -65,6 +65,7 @@ class App extends Component {
 			);
 		}
 	}
+	// Handles the button pressed value in CapacityPicker component and updates the page
 	handlePrice = (capacity = 64) => {
 		let upfrontPrice;
 		let monthlyPrice;
@@ -81,7 +82,8 @@ class App extends Component {
 		});
 	};
 
-	handleColour = (colourNumber) => {
+	// Handles the button pressed value in ColourPicker component and updates the page
+	handleColour = (colourNumber = 2) => {
 		this.setState({
 			currentImageURL: require(`${
 				this.state.phonesData[colourNumber].imageURL
@@ -90,6 +92,7 @@ class App extends Component {
 		});
 	};
 
+	// Grabs the data from JSON file and copies it to the state
 	getJSONData = () => {
 		const name = data[0].groupName;
 		const array = [];
