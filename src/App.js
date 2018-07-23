@@ -90,27 +90,16 @@ class App extends Component {
 	};
 
 	updateCurrentPhoneState = (capacity, colour) => {
-		switch (true) {
-		case capacity === '64GB' && colour === 'Gold':
-			this.setState({ currentPhone: this.state.phonesArray[0] });
-			break;
-		case capacity === '64GB' && colour === 'Silver':
-			this.setState({ currentPhone: this.state.phonesArray[1] });
-			break;
-		case capacity === '64GB' && colour === 'Space Grey':
-			this.setState({ currentPhone: this.state.phonesArray[2] });
-			break;
-		case capacity === '256GB' && colour === 'Gold':
-			this.setState({ currentPhone: this.state.phonesArray[3] });
-			break;
-		case capacity === '256GB' && colour === 'Silver':
-			this.setState({ currentPhone: this.state.phonesArray[4] });
-			break;
-		case capacity === '256GB' && colour === 'Space Grey':
-			this.setState({ currentPhone: this.state.phonesArray[5] });
-			break;
-		default:
-		}
+		let combinations = [
+			'64GB Gold',
+			'64GB Silver',
+			'64GB Space Grey',
+			'256GB Gold',
+			'256GB Silver',
+			'256GB Space Grey'
+		];
+		let index = combinations.indexOf(`${capacity} ${colour}`);
+		this.setState({ currentPhone: this.state.phonesArray[index] });
 	};
 }
 
