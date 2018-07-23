@@ -89,7 +89,7 @@ class App extends Component {
 	};
 
 	updateCurrentPhoneState = (capacity, colour) => {
-		let combinations = [
+		const combinations = [
 			'64GB Gold',
 			'64GB Silver',
 			'64GB Space Grey',

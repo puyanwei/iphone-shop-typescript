@@ -58,6 +58,8 @@ Once this was done it made it easier to work off, and I was able to add small fe
 
 One of the blockers I had was getting the default data onto the page after I had copied the JSON data I needed to the state. The render was happening before the JSON data was copied and so it did not exist.
 
+I solved this issue by realising that I needed a 'currentPhone' state object which would change according to the combination of capacities and colours selected.
+
 ### Future Improvements
 
 -   Responsive page - Implementing my deign mobile first, and then working up to bigger screen sizes would be a must if this page was to go live. However, this was not asked in the brief so I wanted to follow it strictly.
