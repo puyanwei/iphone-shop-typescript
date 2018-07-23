@@ -14,10 +14,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			name: null,
-			description: null,
 			phonesData: [],
-			capacity: 64,
-			colour: 'Space Grey',
 			imageURL: iPhoneEightSpaceGrey,
 			alt: 'iPhone 8 Space Grey',
 			upfrontPrice: '1149',
@@ -35,8 +32,6 @@ class App extends Component {
 			array.push({
 				name: element.displayName,
 				description: element.displayDescription,
-				colour: element.colourName,
-				capacity: element.memory,
 				upfrontPrice: element.priceInfo.hardwarePrice.oneOffPrice.gross,
 				monthlyPrice: element.priceInfo.bundlePrice.monthlyPrice.gross
 			});
@@ -90,7 +85,6 @@ class App extends Component {
 			upfrontPrice = this.state.phonesData[2].upfrontPrice;
 			monthlyPrice = this.state.phonesData[2].monthlyPrice;
 		}
-		console.log(this.state);
 		this.setState({
 			upfrontPrice: upfrontPrice,
 			monthlyPrice: monthlyPrice
