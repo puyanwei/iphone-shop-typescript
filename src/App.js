@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import data from './data/phones.json';
-import iPhone8SpaceGrey from './images/Apple_iPhone_8_Space_Grey_WS2-full-product-front.png';
 import RatingStars from './components/RatingStars/RatingStars';
 import ColourPicker from './components/ColourPicker/ColourPicker';
 import CapacityPicker from './components/CapacityPicker/CapacityPicker';
@@ -21,17 +20,18 @@ class App extends Component {
 
 	// Grabs the data from JSON file and copies it to the state
 	getJSONData = () => {
-		const groupName = data[0].groupName;
 		const array = [];
 
-		data[0].deviceSummary.forEach((element) => {
+		data[0].deviceSummary.forEach((phone) => {
 			array.push({
-				name: element.displayName,
-				description: element.displayDescription,
-				upfrontPrice: element.priceInfo.hardwarePrice.oneOffPrice.gross,
-				monthlyPrice: element.priceInfo.bundlePrice.monthlyPrice.gross,
-				imageURL: element.merchandisingMedia[0].value,
-				imageAlt: element.merchandisingMedia[0].id
+				name: phone.displayName,
+				description: phone.displayDescription,
+				colour: phone.colourName,
+				capacity: phone.memory,
+				imageURL: phone.merchandisingMedia[0].value,
+				imageAlt: phone.merchandisingMedia[0].id,
+				upfrontPrice: phone.priceInfo.hardwarePrice.oneOffPrice.gross,
+				monthlyPrice: phone.priceInfo.bundlePrice.monthlyPrice.gross
 			});
 		});
 		this.setState({
@@ -81,31 +81,36 @@ class App extends Component {
 			</div>
 		);
 	}
-	// Handles the button pressed value in CapacityPicker component and updates the page
-	handlePrice = (capacity = 64) => {
-		let upfrontPrice;
-		let monthlyPrice;
-		if (capacity === 256) {
-			upfrontPrice = this.state.phonesArray[5].upfrontPrice;
-			monthlyPrice = this.state.phonesArray[5].monthlyPrice;
-		} else {
-			upfrontPrice = this.state.phonesArray[2].upfrontPrice;
-			monthlyPrice = this.state.phonesArray[2].monthlyPrice;
-		}
-		this.setState({
-			currentUpfrontPrice: upfrontPrice,
-			currentMonthlyPrice: monthlyPrice
-		});
+	handlePrice = (capacity) => {
+		this.updateCurrentPhoneState(capacity, this.state.currentPhone.colour);
 	};
 
-	// Handles the button pressed value in ColourPicker component and updates the page
-	handleColour = (colourNumber = 2) => {
-		this.setState({
-			currentImageURL: require(`${
-				this.state.phonesArray[colourNumber].imageURL
-			}`),
-			currentImageAlt: this.state.phonesArray[colourNumber].imageAlt
-		});
+	handleColour = (colour) => {
+		this.updateCurrentPhoneState(this.state.currentPhone.capacity, colour);
+	};
+
+	updateCurrentPhoneState = (capacity, colour) => {
+		switch (true) {
+		case capacity === '64GB' && colour === 'Gold':
+			this.setState({ currentPhone: this.state.phonesArray[0] });
+			break;
+		case capacity === '64GB' && colour === 'Silver':
+			this.setState({ currentPhone: this.state.phonesArray[1] });
+			break;
+		case capacity === '64GB' && colour === 'Space Grey':
+			this.setState({ currentPhone: this.state.phonesArray[2] });
+			break;
+		case capacity === '256GB' && colour === 'Gold':
+			this.setState({ currentPhone: this.state.phonesArray[3] });
+			break;
+		case capacity === '256GB' && colour === 'Silver':
+			this.setState({ currentPhone: this.state.phonesArray[4] });
+			break;
+		case capacity === '256GB' && colour === 'Space Grey':
+			this.setState({ currentPhone: this.state.phonesArray[5] });
+			break;
+		default:
+		}
 	};
 }
 

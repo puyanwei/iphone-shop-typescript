@@ -7,7 +7,7 @@ class CapacityPicker extends Component {
 	constructor() {
 		super();
 		this.state = {
-			capacity: '64'
+			capacity: '64GB'
 		};
 	}
 	render() {
@@ -15,14 +15,12 @@ class CapacityPicker extends Component {
 			<div className="capacity-picker">
 				<p>
 					Capacity:{' '}
-					<span className="picker-choice">
-						{this.state.capacity}GB
-					</span>
+					<span className="picker-choice">{this.state.capacity}</span>
 				</p>
-				<button onClick={() => this.handleCapacity(64)}>
+				<button onClick={() => this.handleCapacity('64GB')}>
 					<span className="capacity-number">64</span>
 				</button>
-				<button onClick={() => this.handleCapacity(256)}>
+				<button onClick={() => this.handleCapacity('256GB')}>
 					<span className="capacity-number">256</span>
 				</button>
 			</div>
