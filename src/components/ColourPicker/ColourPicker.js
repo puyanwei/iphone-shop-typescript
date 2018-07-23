@@ -16,14 +16,24 @@ class ColourPicker extends Component {
 					Colour:{' '}
 					<span className="picker-choice">{this.state.colour}</span>
 				</p>
-				<button onClick={() => this.colourChoice('Gold')} />
-				<button onClick={() => this.colourChoice('Silver')} />
-				<button onClick={() => this.colourChoice('Space Grey')} />
+				<button onClick={() => this.colourChoice(0)} />
+				<button onClick={() => this.colourChoice(1)} />
+				<button onClick={() => this.colourChoice(2)} />
 			</div>
 		);
 	}
-	colourChoice = (colour) => {
-		this.props.handleColour(colour);
+	colourChoice = (colourNumber) => {
+		this.props.handleColour(colourNumber);
+		let colour;
+		if (colourNumber === 0) {
+			colour = 'Gold';
+		}
+		if (colourNumber === 1) {
+			colour = 'Silver';
+		}
+		if (colourNumber === 2) {
+			colour = 'Space Grey';
+		}
 		this.setState({ colour: colour });
 	};
 }

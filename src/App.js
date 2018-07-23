@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import data from './data/phones.json';
-import iPhoneEightSpaceGrey from './images/Apple_iPhone_8_Space_Grey_WS2-full-product-front.png';
-import iPhoneEightSilver from './images/Apple_iPhone_8_Silver_WS2-full-product-front.png';
-import iPhoneEightGold from './images/Apple_iPhone_8_Gold-full-product-front.png';
+import iPhone8SpaceGrey from './images/Apple_iPhone_8_Space_Grey_WS2-full-product-front.png';
 import RatingStars from './components/RatingStars/RatingStars';
 import ColourPicker from './components/ColourPicker/ColourPicker';
 import CapacityPicker from './components/CapacityPicker/CapacityPicker';
@@ -13,48 +11,36 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: null,
 			phonesData: [],
-			imageURL: iPhoneEightSpaceGrey,
-			alt: 'iPhone 8 Space Grey',
-			upfrontPrice: '1149',
-			monthlyPrice: '43.20'
+			name: null,
+			currentDescription:
+				'All-glass design, advanced cameras, wireless charging and a smart A11 Bionic chip. Intelligence never looked better.',
+			currentImageURL: iPhone8SpaceGrey,
+			currentImageAlt: 'PR_IMAGE_URLS_THUMBS_FRONT',
+			currentUpfrontPrice: '1149',
+			currentMonthlyPrice: '43.20'
 		};
 	}
 	componentDidMount() {
 		this.getJSONData();
 	}
-	getJSONData = () => {
-		const name = data[0].groupName;
-		const array = [];
-
-		data[0].deviceSummary.forEach((element) => {
-			array.push({
-				name: element.displayName,
-				description: element.displayDescription,
-				upfrontPrice: element.priceInfo.hardwarePrice.oneOffPrice.gross,
-				monthlyPrice: element.priceInfo.bundlePrice.monthlyPrice.gross
-			});
-		});
-		this.setState({
-			name: name,
-			phonesData: array
-		});
-	};
 	render() {
-		if (this.state.phonesData.length === 0) {
+		if (this.state.phonesData.length !== 6) {
 			return <div className="data-delay" />;
 		} else {
 			return (
 				<div className="App">
 					<aside>
-						<img src={this.state.imageURL} alt={this.state.alt} />
+						<img
+							src={this.state.currentImageURL}
+							alt={this.state.currentImageAlt}
+						/>
 					</aside>
 					<main>
 						<h1 className="product-name">{this.state.name}</h1>
 						<RatingStars />
 						<p className="product-description">
-							{this.state.phonesData[0].description}
+							{this.state.currentDescription}
 						</p>
 						<div className="bottom-container">
 							<ColourPicker handleColour={this.handleColour} />
@@ -62,14 +48,14 @@ class App extends Component {
 							<p className="upfront-price">
 								from{' '}
 								<span className="price-number">
-									£{this.state.upfrontPrice}
+									£{this.state.currentUpfrontPrice}
 								</span>{' '}
 								upfront cost
 							</p>
 							<p className="monthly-price">
 								when you pay{' '}
 								<span className="price-number">
-									£{this.state.monthlyPrice}
+									£{this.state.currentMonthlyPrice}
 								</span>{' '}
 								a month
 							</p>
@@ -79,7 +65,7 @@ class App extends Component {
 			);
 		}
 	}
-	handlePrice = (capacity) => {
+	handlePrice = (capacity = 64) => {
 		let upfrontPrice;
 		let monthlyPrice;
 		if (capacity === 256) {
@@ -90,30 +76,53 @@ class App extends Component {
 			monthlyPrice = this.state.phonesData[2].monthlyPrice;
 		}
 		this.setState({
-			upfrontPrice: upfrontPrice,
-			monthlyPrice: monthlyPrice
+			currentUpfrontPrice: upfrontPrice,
+			currentMonthlyPrice: monthlyPrice
 		});
 	};
 
-	handleColour = (colour) => {
-		if (colour === 'Gold') {
-			this.setState({
-				imageURL: iPhoneEightGold,
-				alt: 'iPhone 8 Gold'
+	handleColour = (colourNumber) => {
+		this.setState({
+			currentImageURL: require(`${
+				this.state.phonesData[colourNumber].imageURL
+			}`),
+			currentImageAlt: this.state.phonesData[colourNumber].imageAlt
+		});
+	};
+
+	getJSONData = () => {
+		const name = data[0].groupName;
+		const array = [];
+
+		data[0].deviceSummary.forEach((element) => {
+			array.push({
+				name: element.displayName,
+				description: element.displayDescription,
+				upfrontPrice: element.priceInfo.hardwarePrice.oneOffPrice.gross,
+				monthlyPrice: element.priceInfo.bundlePrice.monthlyPrice.gross,
+				imageURL: element.merchandisingMedia[0].value,
+				imageAlt: element.merchandisingMedia[0].id
 			});
-		}
-		if (colour === 'Silver') {
-			this.setState({
-				imageURL: iPhoneEightSilver,
-				alt: 'iPhone 8 Silver'
-			});
-		}
-		if (colour === 'Space Grey') {
-			this.setState({
-				imageURL: iPhoneEightSpaceGrey,
-				alt: 'iPhone 8 Space Grey'
-			});
-		}
+		});
+		this.setState({
+			name: name,
+			phonesData: array
+		});
+	};
+
+	applyDefaults = () => {
+		// const imageURL = this.state.phonesData[2].imageURL;
+		// console.log(this.state.phonesData[2].imageURL);
+		// const imageAlt = this.state.phonesData[2].imageAlt;
+		// const upfrontPrice = this.state.phonesData[2].upfrontPrice;
+		// const monthlyPrice = this.state.phonesData[2].monthlyPrice;
+		//
+		// this.setState({
+		// imageURL: imageURL
+		// 	imageAlt: imageAlt,
+		// 	upfrontPrice: upfrontPrice,
+		// 	monthlyPrice: monthlyPrice
+		// });
 	};
 }
 
