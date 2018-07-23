@@ -6,12 +6,20 @@
 		}
 	}
 	button {
-		width: 50px;
+		width: 45px;
 		height: 2.5rem;
 		margin: 0.3rem;
 		border-radius: 10px;
+		border-color: #8080806b;
 	}
 	button:nth-of-type(1) {
 		margin-left: 0;
+		background: linear-gradient(#f8e8df75, #dac6bc);
+	}
+	button:nth-of-type(2) {
+		background: linear-gradient(#eeecec, #b8b7b8);
+	}
+	button:nth-of-type(3) {
+		background: #202020;
 	}
 }

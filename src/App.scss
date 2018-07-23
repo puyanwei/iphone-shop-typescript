@@ -1,6 +1,7 @@
 .App {
 	display: grid;
 	grid-template-columns: 50% 50%;
+	margin: 2rem;
 	aside {
 		grid-column-start: 1;
 		img {

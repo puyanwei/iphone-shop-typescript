@@ -18,8 +18,12 @@ class CapacityPicker extends Component {
 						{this.state.capacity}GB
 					</span>
 				</p>
-				<button onClick={() => this.handleCapacity(64)}>64</button>
-				<button onClick={() => this.handleCapacity(256)}>256</button>
+				<button onClick={() => this.handleCapacity(64)}>
+					<span className="capacity-number">64</span>
+				</button>
+				<button onClick={() => this.handleCapacity(256)}>
+					<span className="capacity-number">256</span>
+				</button>
 			</div>
 		);
 	}

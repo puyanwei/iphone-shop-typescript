@@ -16,13 +16,9 @@ class ColourPicker extends Component {
 					Colour:{' '}
 					<span className="picker-choice">{this.state.colour}</span>
 				</p>
-				<button onClick={() => this.colourChoice('Gold')}>Gold</button>
-				<button onClick={() => this.colourChoice('Silver')}>
-					Silver
-				</button>
-				<button onClick={() => this.colourChoice('Space Grey')}>
-					SGrey
-				</button>
+				<button onClick={() => this.colourChoice('Gold')} />
+				<button onClick={() => this.colourChoice('Silver')} />
+				<button onClick={() => this.colourChoice('Space Grey')} />
 			</div>
 		);
 	}
