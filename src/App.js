@@ -34,7 +34,7 @@ class App extends Component {
 			});
 		});
 		this.setState({
-			currentPhone: array[2],
+			currentPhone: array[2], // Sets the default phone object which is 64GB Space Grey
 			phonesArray: array
 		});
 	};
@@ -88,6 +88,7 @@ class App extends Component {
 		this.updateCurrentPhoneState(this.state.currentPhone.capacity, colour);
 	};
 
+	// Applies the correct phone object to the setState based on the colour and capacity combination
 	updateCurrentPhoneState = (capacity, colour) => {
 		const combinations = [
 			'64GB Gold',
