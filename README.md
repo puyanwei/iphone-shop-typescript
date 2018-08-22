@@ -8,7 +8,7 @@ A prototype of an online shop for selling iphones.
 
 ```
 git clone git@github.com:puyanwei/iphone-shop.git
-cd nasa-gallery
+cd iphone-shop
 npm install
 npm start
 ```
