@@ -1,36 +1,30 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-import './ColourPicker.css';
+import "./ColourPicker.css";
 
-class ColourPicker extends Component {
-	constructor() {
-		super();
-		this.state = {
-			colour: 'Space Grey'
-		};
-	}
-	render() {
-		return (
-			<div className="colour-picker">
-				<p>
-					Colour:{' '}
-					<span className="picker-choice">{this.state.colour}</span>
-				</p>
-				<button onClick={() => this.colourChoice('Gold')} />
-				<button onClick={() => this.colourChoice('Silver')} />
-				<button onClick={() => this.colourChoice('Space Grey')} />
-			</div>
-		);
-	}
-	colourChoice = (colour) => {
-		this.props.handleColour(colour);
-		this.setState({ colour: colour });
-	};
-}
+const ColourPicker = props => {
+    const [colour, setColour] = useState("Space Grey");
+
+    useEffect(() => {
+        props.handleColour(colour);
+    });
+
+    return (
+        <div className="colour-picker">
+            <p>
+                {`Colour: `}
+                <span className="picker-choice">{colour}</span>
+            </p>
+            <button onClick={() => setColour("Gold")} />
+            <button onClick={() => setColour("Silver")} />
+            <button onClick={() => setColour("Space Grey")} />
+        </div>
+    );
+};
 
 ColourPicker.propTypes = {
-	handleColour: PropTypes.func
+    handleColour: PropTypes.func
 };
 
 export default ColourPicker;
