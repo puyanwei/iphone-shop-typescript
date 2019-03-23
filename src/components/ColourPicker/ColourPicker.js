@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 import "./ColourPicker.css";
 
-const ColourPicker = props => {
+const ColourPicker = ({ handleColour }) => {
     const [colour, setColour] = useState("Space Grey");
 
     useEffect(() => {
-        props.handleColour(colour);
-    });
+        handleColour(colour);
+    }, [colour]);
 
     return (
         <div className="colour-picker">

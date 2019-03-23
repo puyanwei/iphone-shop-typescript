@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 import "./CapacityPicker.css";
 
-const CapacityPicker = props => {
+const CapacityPicker = ({ handlePrice }) => {
     const [capacity, setCapacity] = useState("64GB");
 
     useEffect(() => {
-        props.handlePrice(capacity);
-    });
+        handlePrice(capacity);
+    }, [capacity]);
 
     return (
         <div className="capacity-picker">

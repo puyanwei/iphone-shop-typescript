@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import data from "./data/phones.json";
 import RatingStars from "./components/RatingStars/RatingStars";
@@ -7,15 +7,8 @@ import CapacityPicker from "./components/CapacityPicker/CapacityPicker";
 import "./App.css";
 
 const App = () => {
-    const [phones, setPhones] = useState([]);
-    const [currentPhone, setCurrentPhone] = useState(null);
-    // const { displayName, displayDescription } = currentPhone;
-
-    useEffect(() => {
-        const iphonesData = data[0].deviceSummary;
-        setPhones(iphonesData);
-        setCurrentPhone(iphonesData[2]);
-    });
+    const [phones] = useState(data[0].deviceSummary);
+    const [currentPhone, setCurrentPhone] = useState(data[0].deviceSummary[2]);
 
     const handlePrice = capacity => {
         updateCurrentPhoneState(capacity, currentPhone.colourName);
@@ -39,9 +32,6 @@ const App = () => {
         setCurrentPhone(phones[index]);
     };
 
-    // upfrontPrice: device.priceInfo.hardwarePrice.oneOffPrice.gross,
-    //     monthlyPrice: device.priceInfo.bundlePrice.monthlyPrice.gross
-
     return !phones.length ? (
         <div className="loading-screen">Loading...</div>
     ) : (
@@ -53,7 +43,6 @@ const App = () => {
                 />
             </aside>
             <main>
-                {console.log(currentPhone)}
                 <h1 className="product-name">{currentPhone.displayName}</h1>
                 <RatingStars />
                 <p className="product-description">
