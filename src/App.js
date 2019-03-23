@@ -11,11 +11,13 @@ const App = () => {
     const [currentPhone, setCurrentPhone] = useState(data[0].deviceSummary[2]);
 
     const handlePrice = capacity => {
-        updateCurrentPhoneState(capacity, currentPhone.colourName);
+        const { colourName } = currentPhone;
+        updateCurrentPhoneState(capacity, colourName);
     };
 
     const handleColour = colour => {
-        updateCurrentPhoneState(currentPhone.memory, colour);
+        const { memory } = currentPhone;
+        updateCurrentPhoneState(memory, colour);
     };
 
     // Applies the correct phone object to the state based on the colour and capacity combination
@@ -32,15 +34,15 @@ const App = () => {
         setCurrentPhone(phones[index]);
     };
 
+    let imageURL = currentPhone.merchandisingMedia[0].value;
+    let imageAlt = currentPhone.merchandisingMedia[0].id;
+
     return !phones.length ? (
         <div className="loading-screen">Loading...</div>
     ) : (
         <div className="App">
             <aside>
-                <img
-                    src={require(`${phones[2].merchandisingMedia[0].value}`)}
-                    alt={phones[2].merchandisingMedia[0].id}
-                />
+                <img src={require(`${imageURL}`)} alt={imageAlt} />
             </aside>
             <main>
                 <h1 className="product-name">{currentPhone.displayName}</h1>
