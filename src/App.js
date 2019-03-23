@@ -36,11 +36,9 @@ const App = () => {
 
     let imageURL = currentPhone.merchandisingMedia[0].value;
     let imageAlt = currentPhone.merchandisingMedia[0].id;
-    let {
-        displayName,
-        displayDescription,
-        priceInfo: { hardwarePrice, bundlePrice }
-    } = currentPhone;
+    let upfrontPrice = currentPhone.priceInfo.hardwarePrice.oneOffPrice.gross;
+    let monthlyPrice = currentPhone.priceInfo.bundlePrice.monthlyPrice.gross;
+    let { displayName, displayDescription } = currentPhone;
 
     return !phones.length ? (
         <div className="loading-screen">Loading...</div>
@@ -58,17 +56,13 @@ const App = () => {
                     <CapacityPicker handlePrice={handlePrice} />
                     <p className="upfront-price">
                         from
-                        <span className="price-number">
-                            £{hardwarePrice.oneOffPrice.gross}
-                        </span>
+                        <span className="price-number">£{upfrontPrice}</span>
                         upfront cost
                     </p>
                     <p className="monthly-price">
                         when you pay
-                        <span className="price-number">
-                            £{bundlePrice.monthlyPrice.gross}
-                        </span>
-                        a month
+                        <span className="price-number">£{monthlyPrice}</span>a
+                        month
                     </p>
                 </div>
             </main>
