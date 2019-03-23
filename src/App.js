@@ -18,11 +18,11 @@ const App = () => {
     });
 
     const handlePrice = capacity => {
-        updateCurrentPhoneState(capacity, currentPhone.colour);
+        updateCurrentPhoneState(capacity, currentPhone.colourName);
     };
 
     const handleColour = colour => {
-        updateCurrentPhoneState(currentPhone.capacity, colour);
+        updateCurrentPhoneState(currentPhone.memory, colour);
     };
 
     // Applies the correct phone object to the state based on the colour and capacity combination
@@ -63,17 +63,25 @@ const App = () => {
                     <ColourPicker handleColour={handleColour} />
                     <CapacityPicker handlePrice={handlePrice} />
                     <p className="upfront-price">
-                        from{" "}
+                        from
                         <span className="price-number">
-                            £{currentPhone.upfrontPrice}
-                        </span>{" "}
+                            £
+                            {
+                                currentPhone.priceInfo.hardwarePrice.oneOffPrice
+                                    .gross
+                            }
+                        </span>
                         upfront cost
                     </p>
                     <p className="monthly-price">
-                        when you pay{" "}
+                        when you pay
                         <span className="price-number">
-                            £{currentPhone.monthlyPrice}
-                        </span>{" "}
+                            £
+                            {
+                                currentPhone.priceInfo.bundlePrice.monthlyPrice
+                                    .gross
+                            }
+                        </span>
                         a month
                     </p>
                 </div>
