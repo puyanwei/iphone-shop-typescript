@@ -36,6 +36,11 @@ const App = () => {
 
     let imageURL = currentPhone.merchandisingMedia[0].value;
     let imageAlt = currentPhone.merchandisingMedia[0].id;
+    let {
+        displayName,
+        displayDescription,
+        priceInfo: { hardwarePrice, bundlePrice }
+    } = currentPhone;
 
     return !phones.length ? (
         <div className="loading-screen">Loading...</div>
@@ -45,33 +50,23 @@ const App = () => {
                 <img src={require(`${imageURL}`)} alt={imageAlt} />
             </aside>
             <main>
-                <h1 className="product-name">{currentPhone.displayName}</h1>
+                <h1 className="product-name">{displayName}</h1>
                 <RatingStars />
-                <p className="product-description">
-                    {currentPhone.displayDescription}
-                </p>
+                <p className="product-description">{displayDescription}</p>
                 <div className="bottom-container">
                     <ColourPicker handleColour={handleColour} />
                     <CapacityPicker handlePrice={handlePrice} />
                     <p className="upfront-price">
                         from
                         <span className="price-number">
-                            £
-                            {
-                                currentPhone.priceInfo.hardwarePrice.oneOffPrice
-                                    .gross
-                            }
+                            £{hardwarePrice.oneOffPrice.gross}
                         </span>
                         upfront cost
                     </p>
                     <p className="monthly-price">
                         when you pay
                         <span className="price-number">
-                            £
-                            {
-                                currentPhone.priceInfo.bundlePrice.monthlyPrice
-                                    .gross
-                            }
+                            £{bundlePrice.monthlyPrice.gross}
                         </span>
                         a month
                     </p>
