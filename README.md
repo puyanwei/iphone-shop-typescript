@@ -14,7 +14,3 @@ cd iphone-shop
 npm install
 npm start
 ```
-
-I used ESLint following the [air-bnb](https://github.com/airbnb/javascript) style guide to assure quality in my code.
-
-`npm run lint`
