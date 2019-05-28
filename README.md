@@ -1,5 +1,7 @@
 # Iphone Shop React Hooks
 
+*status - completed!*
+
 This is a refactor of [this](https://github.com/puyanwei/iphone-shop) tech test of an online shop for selling iphones.
 
 I wanted to learn what React Hooks were about and implemented them into this project.
