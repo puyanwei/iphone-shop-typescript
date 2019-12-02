@@ -19,7 +19,7 @@
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "react-scripts": "*"
+    "react-scripts": "^3.2.0"
   },
   "devDependencies": {
     "eslint": "*",
