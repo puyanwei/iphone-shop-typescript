@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./ColourPicker.css";
 
-const ColourPicker = ({ handleColour }) => {
+const ColourPicker = ({ handleColour }: { handleColour: (string: String) => void }) => {
     const [colour, setColour] = useState("Space Grey");
 
     useEffect(() => {

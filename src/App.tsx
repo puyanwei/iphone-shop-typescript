@@ -15,13 +15,13 @@ const App = () => {
         updateCurrentPhoneState(capacity, colourName);
     };
 
-    const handleColour = (colour: String) => {
+    const handleColour = (colour: String): void => {
         const { memory } = currentPhone;
         updateCurrentPhoneState(memory, colour);
     };
 
     // Applies the correct phone object to the state based on the colour and capacity combination
-    const updateCurrentPhoneState = (capacity: String, colour: String) => {
+    const updateCurrentPhoneState = (capacity: String, colour: String): void => {
         const combinations = [
             "64GB Gold",
             "64GB Silver",
@@ -62,7 +62,7 @@ const App = () => {
                         <p className="monthly-price">
                             when you pay
                         <span className="price-number">£{monthlyPrice}</span>a
-                                                                        month
+                                                                                month
                     </p>
                     </div>
                 </main>
