@@ -10,6 +10,12 @@ const App = () => {
     const [phones] = useState(data[0].deviceSummary);
     const [currentPhone, setCurrentPhone] = useState(data[0].deviceSummary[2]);
 
+    let imageURL = currentPhone.merchandisingMedia[0].value;
+    let imageAlt = currentPhone.merchandisingMedia[0].id;
+    let upfrontPrice = currentPhone.priceInfo.hardwarePrice.oneOffPrice.gross;
+    let monthlyPrice = currentPhone.priceInfo.bundlePrice.monthlyPrice.gross;
+    let { displayName, displayDescription } = currentPhone;
+
     const handlePrice = (capacity: String): void => {
         const { colourName } = currentPhone;
         updateCurrentPhoneState(capacity, colourName);
@@ -34,12 +40,6 @@ const App = () => {
         setCurrentPhone(phones[index]);
     };
 
-    let imageURL = currentPhone.merchandisingMedia[0].value;
-    let imageAlt = currentPhone.merchandisingMedia[0].id;
-    let upfrontPrice = currentPhone.priceInfo.hardwarePrice.oneOffPrice.gross;
-    let monthlyPrice = currentPhone.priceInfo.bundlePrice.monthlyPrice.gross;
-    let { displayName, displayDescription } = currentPhone;
-
     return !phones.length ? (
         <div className="loading-screen">Loading...</div>
     ) : (
@@ -61,8 +61,7 @@ const App = () => {
                     </p>
                         <p className="monthly-price">
                             when you pay
-                        <span className="price-number">£{monthlyPrice}</span>a
-                                                                                month
+                        <span className="price-number">£{monthlyPrice}</span>a month
                     </p>
                     </div>
                 </main>
