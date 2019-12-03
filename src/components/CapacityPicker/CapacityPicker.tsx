@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
 import "./CapacityPicker.css";
 
-const CapacityPicker = ({ handlePrice }) => {
+const CapacityPicker = ({ handlePrice }: { handlePrice: (string: String) => void }) => {
     const [capacity, setCapacity] = useState("64GB");
 
     useEffect(() => {
@@ -23,10 +22,6 @@ const CapacityPicker = ({ handlePrice }) => {
             </button>
         </div>
     );
-};
-
-CapacityPicker.propTypes = {
-    handlePrice: PropTypes.func
 };
 
 export default CapacityPicker;

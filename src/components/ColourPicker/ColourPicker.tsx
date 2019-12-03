@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
 import "./ColourPicker.css";
 
@@ -21,10 +20,6 @@ const ColourPicker = ({ handleColour }) => {
             <button onClick={() => setColour("Space Grey")} />
         </div>
     );
-};
-
-ColourPicker.propTypes = {
-    handleColour: PropTypes.func
 };
 
 export default ColourPicker;
