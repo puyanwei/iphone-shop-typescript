@@ -7,7 +7,7 @@ const ColourPicker = ({ handleColour }: { handleColour: (string: String) => void
 
     useEffect(() => {
         handleColour(colour);
-    }, [colour]);
+    }, [handleColour, colour]);
 
     return (
         <div className="colour-picker">

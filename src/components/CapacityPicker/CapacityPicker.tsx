@@ -7,7 +7,7 @@ const CapacityPicker = ({ handlePrice }: { handlePrice: (string: String) => void
 
     useEffect(() => {
         handlePrice(capacity);
-    }, [capacity]);
+    }, [handlePrice, capacity]);
 
     return (
         <div className="capacity-picker">
